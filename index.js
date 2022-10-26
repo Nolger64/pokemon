@@ -33,6 +33,6 @@ export function cardCreate(id) {
     });
 }
 //------------------------------------------------------------
-for (let i = 0; i < 10; i++) {
+for (let i = 0; i < 40; i++) {
     cardCreate(i);
 }
