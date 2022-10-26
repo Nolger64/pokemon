@@ -1,4 +1,29 @@
 const Gridpokemons = document.getElementById("Gridpokemons");
+const inputBuscar = document.getElementById("inputBuscar");
+
+//Buscar
+inputBuscar.oninput = function () {
+
+    const buscar = getData().then((data) => {
+        Gridpokemons.replaceChildren();
+        let lengthString = (inputBuscar.value).length;
+        let found = false;
+        for (let i = 0; i < 500; i++) {
+            const name = (data.results[i].name).substring(0, lengthString);
+            if (name.toLowerCase() == inputBuscar.value.toLowerCase()) {
+                cardCreate(i);
+                found = true;
+            }
+        }
+        if (found) {
+            
+        }else{
+            Gridpokemons.innerHTML = ("No encontrado");
+        }
+    })
+}
+
+//---------------------------------------------------------
 
 //Funciones para obtener datos del servidor
 async function getData() {
@@ -7,7 +32,7 @@ async function getData() {
     return data;
 }
 function getUrl(id) {
-    const url = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/" + (id + 1)  + ".svg";
+    const url = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/" + (id + 1) + ".svg";
     return url;
 }
 //----------------------------------------------------------
@@ -29,10 +54,11 @@ export function cardCreate(id) {
         cardText.innerHTML = "<strong>" + data.results[id].name + "</strong>";
         divCardBody.appendChild(cardText);
         Gridpokemons.appendChild(divCard);
-        console.log(divCard);
     });
 }
 //------------------------------------------------------------
 for (let i = 0; i < 40; i++) {
     cardCreate(i);
 }
+
+console.log();
