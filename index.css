@@ -1,0 +1,28 @@
+.img-logo{
+    width: 100px;
+}
+.card-img-top{
+    width: 280px;
+    height: 310px;
+    object-fit: contain;
+    padding: 5px;
+}
+.card{
+    width: 300px;
+    height: 350px;
+    margin: 20px auto;
+}
+.card-body{
+    border: none;
+    text-align: center;
+
+}
+.gridPokemos{
+    display: grid;
+    grid-template-columns: repeat( auto-fit, minmax(320px, 1fr) );
+    justify-content: center;
+}
+
+@media (max-width: 600px) {
+
+  }
