@@ -3,22 +3,27 @@ const inputBuscar = document.getElementById("inputBuscar");
 
 //Buscar
 inputBuscar.oninput = function () {
-
+    let contador = 1;
     const buscar = getData().then((data) => {
         Gridpokemons.replaceChildren();
         let lengthString = (inputBuscar.value).length;
         let found = false;
-        for (let i = 0; i < 500; i++) {
-            const name = (data.results[i].name).substring(0, lengthString);
-            if (name.toLowerCase() == inputBuscar.value.toLowerCase()) {
+        if (lengthString == 0) {
+            for (let i = 0; i < 40; i++) {
                 cardCreate(i);
-                found = true;
+            }
+        } else {
+            for (let i = 0; i < 500; i++) {
+                const name = (data.results[i].name).substring(0, lengthString);
+                if (name.toLowerCase() == inputBuscar.value.toLowerCase()) {
+                    cardCreate(i);
+                    found = true;
+                    contador = contador + 1;
+                }
             }
         }
-        if (found) {
-            
-        }else{
-            Gridpokemons.innerHTML = ("No encontrado");
+        if((found == false) && (lengthString != 0)){
+            Gridpokemons.innerHTML = ('Pokemon no encontrado');
         }
     })
 }
