@@ -24,5 +24,7 @@
 }
 
 @media (max-width: 600px) {
-
+    .container-fluid.nav-bar-wrap.navBarFlex{
+        flex-wrap: nowrap;
+    }
   }
